@@ -11,11 +11,6 @@ import MobileMenu from "../MobileMenu";
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
-  // For our mobile hamburger menu, we'll want to use a button
-  // with an onClick handler, something like this:
-  //
-  // <button onClick={() => setShowMobileMenu(true)}>
-
   return (
     <header>
       <SuperHeader />
@@ -32,23 +27,22 @@ const Header = () => {
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side>
-          <MobileSide>
+          <FluidWrapper>
             <UnstyledButton>
               <Icon id="shopping-bag" strokeWidth={2} />
             </UnstyledButton>
             <UnstyledButton>
               <Icon id="search" strokeWidth={2} />
             </UnstyledButton>
-            <UnstyledButton>
+            <UnstyledButton onClick={() => setShowMobileMenu(true)}>
               <Icon id="menu" strokeWidth={2} />
             </UnstyledButton>
-          </MobileSide>
+          </FluidWrapper>
         </Side>
       </MainHeader>
-
       <MobileMenu
         isOpen={showMobileMenu}
-        onDismiss={() => setShowMobileMenu(false)}
+        handleOpenChange={setShowMobileMenu}
       />
     </header>
   );
@@ -72,7 +66,7 @@ const Nav = styled.nav`
   }
 `;
 
-const MobileSide = styled.div`
+const FluidWrapper = styled.div`
   display: none;
 
   @media ${QUERY.tabletAndBelow} {
