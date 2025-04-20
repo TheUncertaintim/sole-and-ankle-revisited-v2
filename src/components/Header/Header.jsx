@@ -26,19 +26,17 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Side>
-          <FluidWrapper>
-            <UnstyledButton>
-              <Icon id="shopping-bag" strokeWidth={2} />
-            </UnstyledButton>
-            <UnstyledButton>
-              <Icon id="search" strokeWidth={2} />
-            </UnstyledButton>
-            <UnstyledButton onClick={() => setShowMobileMenu(true)}>
-              <Icon id="menu" strokeWidth={2} />
-            </UnstyledButton>
-          </FluidWrapper>
-        </Side>
+        <FluidWrapper>
+          <UnstyledButton>
+            <Icon id="shopping-bag" strokeWidth={2} />
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="search" strokeWidth={2} />
+          </UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
+            <Icon id="menu" strokeWidth={2} />
+          </UnstyledButton>
+        </FluidWrapper>
       </MainHeader>
       <MobileMenu
         isOpen={showMobileMenu}
@@ -54,22 +52,26 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  overflow: auto;
 `;
 
 const Nav = styled.nav`
+  flex: 2;
   display: flex;
-  gap: 48px;
+  gap: clamp(1.2rem, 12.6vw - 4.5rem, 3rem);
   margin: 0px 48px;
 
-  @media ${QUERY.tabletAndBelow} {
+  @media ${QUERY.phoneAndBelow} {
     display: none;
   }
 `;
 
 const FluidWrapper = styled.div`
+  flex: 1;
+
   display: none;
 
-  @media ${QUERY.tabletAndBelow} {
+  @media ${QUERY.phoneAndBelow} {
     display: flex;
     justify-content: flex-end;
     gap: 30px;
@@ -78,7 +80,6 @@ const FluidWrapper = styled.div`
 
 const Side = styled.div`
   flex: 1;
-  margin-right: auto;
 `;
 
 const NavLink = styled.a`
