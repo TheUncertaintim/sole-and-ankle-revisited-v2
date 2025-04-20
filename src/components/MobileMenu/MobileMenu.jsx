@@ -103,7 +103,7 @@ const Nav = styled.nav`
 
   & > a {
     text-decoration: none;
-    color: ${COLORS.gray[900]};
+    color: var(--color-gray-900);
     font-size: ${18 / 16}rem;
     font-weight: ${WEIGHTS.medium};
     text-transform: uppercase;
@@ -117,7 +117,7 @@ const Footer = styled.nav`
 
   & > a {
     text-decoration: none;
-    color: ${COLORS.gray[700]};
+    color: var(--color-gray-700);
     font-size: ${14 / 16}rem;
     font-weight: ${WEIGHTS.normal};
   }
